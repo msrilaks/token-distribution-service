@@ -1,7 +1,7 @@
-package com.cloud.tokenservice.controllers;
+package com.cloud.tokenservice.controller;
 
 import com.cloud.tokenservice.model.Distribution;
-import com.cloud.tokenservice.services.DistributionService;
+import com.cloud.tokenservice.service.DistributionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

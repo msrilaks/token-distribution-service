@@ -1,14 +1,20 @@
-package com.cloud.tokenservice.services;
+package com.cloud.tokenservice.service;
 
 import com.cloud.tokenservice.model.Distribution;
+import com.cloud.tokenservice.repository.TokenRingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
 public class DistributionService {
+    @Autowired
+    TokenRingRepository tokenRingRepository;
+
     public void createDistribution(Distribution distribution) {
         distribution.id = UUID.randomUUID();
+        tokenRingRepository.addToken(distribution.id.toString());
     }
 
     public void updateDistribution(
