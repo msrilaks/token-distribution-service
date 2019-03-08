@@ -1,13 +1,17 @@
 package com.cloud.tokenservice.controllers;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.UUID;
 
 @RestController
 public class TokenController {
 
-    @RequestMapping("/tokens")
-    public String getTokens() {
+    @GetMapping("/distributions/{distributionId}/token")
+    public String getToken(
+            @PathVariable("distributionId") UUID distributionId) {
         return "Greetings from Spring Boot!";
     }
 
