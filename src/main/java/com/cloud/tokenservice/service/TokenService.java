@@ -1,6 +1,5 @@
 package com.cloud.tokenservice.service;
 
-import com.cloud.tokenservice.model.Distribution;
 import com.cloud.tokenservice.repository.TokenRingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

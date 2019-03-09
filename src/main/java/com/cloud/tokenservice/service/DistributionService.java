@@ -14,14 +14,19 @@ public class DistributionService {
 
     public void createDistribution(Distribution distribution) {
         distribution.id = UUID.randomUUID();
-        tokenRingRepository.create(distribution);
+        tokenRingRepository.createDistribution(distribution);
     }
 
     public void updateDistribution(
-            UUID distributionId,
-            Distribution distribution) {
+            UUID distributionId, Distribution distribution) {
+        distribution.id = distributionId;
+        tokenRingRepository.updateDistribution(distributionId, distribution);
     }
 
     public void deleteDistribution(UUID distributionId) {
+    }
+
+    public Distribution getDistribution(UUID distributionId) {
+        return tokenRingRepository.getDistribution(distributionId);
     }
 }

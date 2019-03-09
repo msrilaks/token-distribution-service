@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Group {
-    public Token token;
-    public int   percentage;
+    public String token;
+    public int    percentage;
 }
