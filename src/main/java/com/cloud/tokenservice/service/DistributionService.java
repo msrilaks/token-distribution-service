@@ -14,7 +14,7 @@ public class DistributionService {
 
     public void createDistribution(Distribution distribution) {
         distribution.id = UUID.randomUUID();
-        tokenRingRepository.addToken(distribution.id.toString());
+        tokenRingRepository.create(distribution);
     }
 
     public void updateDistribution(

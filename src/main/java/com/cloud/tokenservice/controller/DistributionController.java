@@ -38,4 +38,11 @@ public class DistributionController {
         distributionService.deleteDistribution(distributionId);
         return ResponseEntity.ok().build();
     }
+
+//    @GetMapping(path = "/distributions/{distributionId}", consumes = "application/json",
+//                 produces = "application/json")
+//    public ResponseEntity<Distribution> getDistribution() {
+//        distributionService.createDistribution();
+//        return ResponseEntity.ok(distribution);
+//    }
 }
