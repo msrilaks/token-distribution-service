@@ -28,9 +28,9 @@ targetCompatibility = 1.8
 dependencies {
     //http://localhost:8080/swagger-ui.html
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis',
-            version: '2.0.4.RELEASE'
-    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    // https://mvnrepository.com/artifact/io.lettuce/lettuce-core
+    compile group: 'io.lettuce', name: 'lettuce-core', version: '5.1.5.RELEASE'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     compileOnly 'org.projectlombok:lombok:1.18.6'
