@@ -1,5 +1,6 @@
 package com.cloud.tokenservice.controller;
 
+import com.cloud.tokenservice.model.Token;
 import com.cloud.tokenservice.service.TokenService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +19,7 @@ public class TokenController {
 
     @GetMapping("/distributions/{distributionId}/token")
     @ApiOperation(value = "Get a token", tags = {"Token"})
-    public String getToken(
+    public Token getToken(
             @PathVariable("distributionId")
                     UUID distributionId) {
         return tokenService.getToken(distributionId);

@@ -9,4 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Token {
     public String token;
+
+    public Token(String token) {
+        this.token = token;
+    }
 }

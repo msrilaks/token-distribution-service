@@ -2,6 +2,7 @@ package com.cloud.tokenservice.repository;
 
 import com.cloud.tokenservice.model.Distribution;
 import com.cloud.tokenservice.model.Group;
+import com.cloud.tokenservice.model.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -14,10 +15,10 @@ public class TokenRingRepository {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    public String getToken(String distributionId) {
-        return redisTemplate.opsForList()
-                            .rightPopAndLeftPush(distributionId,
-                                                 distributionId);
+    public Token getToken(String distributionId) {
+        return new Token(redisTemplate.opsForList()
+                                      .rightPopAndLeftPush(distributionId,
+                                                           distributionId));
     }
 
     public void createTokenRing(Distribution distribution) {

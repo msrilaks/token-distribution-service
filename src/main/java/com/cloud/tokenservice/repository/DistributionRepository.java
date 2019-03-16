@@ -1,5 +1,7 @@
 package com.cloud.tokenservice.repository;
 
+import com.cloud.tokenservice.error.ErrorCodes;
+import com.cloud.tokenservice.exception.DistributionException;
 import com.cloud.tokenservice.model.Distribution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,8 +31,13 @@ public class DistributionRepository {
     }
 
     public Distribution getDistribution(UUID distributionId) {
-        Set<Distribution> values = setOps.members(distributionId);
-        return (values == null) ? null : values.iterator()
-                                               .next();
+        try {
+            Set<Distribution> values = setOps.members(distributionId);
+            return values.iterator()
+                         .next();
+        } catch (Exception e) {
+            throw new DistributionException(
+                    ErrorCodes.DISTRIBUTION_NOT_FOUND.constructError(), e);
+        }
     }
 }
