@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 public class Distribution implements Serializable {
-    public UUID        id;
-    public String      name;
-    public List<Group> groups;
+    private UUID        id;
+    private String      name;
+    private List<Group> groups;
 }

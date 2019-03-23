@@ -33,11 +33,11 @@ public class TokenRingRepository {
     }
 
     private void populateTokenRing(Distribution distribution) {
-        for (Group group : distribution.groups) {
+        for (Group group : distribution.getGroups()) {
             for (int i = 0; i < group.percentage; i++) {
                 String token = group.token;
                 redisTemplate.opsForList()
-                             .leftPush(distribution.id.toString(), token);
+                             .leftPush(distribution.getId().toString(), token);
             }
         }
     }

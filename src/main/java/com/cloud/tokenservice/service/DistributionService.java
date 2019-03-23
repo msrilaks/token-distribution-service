@@ -17,14 +17,14 @@ public class DistributionService {
     DistributionRepository distributionRepository;
 
     public void createDistribution(Distribution distribution) {
-        distribution.id = UUID.randomUUID();
+        distribution.setId(UUID.randomUUID());
         distributionRepository.createDistribution(distribution);
         tokenRingRepository.createTokenRing(distribution);
     }
 
     public void updateDistribution(
             UUID distributionId, Distribution distribution) {
-        distribution.id = distributionId;
+        distribution.setId(distributionId);
         tokenRingRepository.updateTokenRing(distributionId, distribution);
     }
 
