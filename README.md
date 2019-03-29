@@ -1,5 +1,6 @@
 # token-distribution-service
-This is a REST service that allows generation of tokens according to a specified distribution and returns tokens to incoming GET requests with adherence to the distribution percentages.
+This is a RESTful microservice that allows generation of tokens according to a
+specified distribution and returns tokens to incoming GET requests with adherence to the distribution percentages.
 
 Build Service:
 gradlew build
