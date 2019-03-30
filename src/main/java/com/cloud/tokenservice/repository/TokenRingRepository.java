@@ -34,8 +34,8 @@ public class TokenRingRepository {
 
     private void populateTokenRing(Distribution distribution) {
         for (Group group : distribution.getGroups()) {
-            for (int i = 0; i < group.percentage; i++) {
-                String token = group.token;
+            for (int i = 0; i < group.getPercentage(); i++) {
+                String token = group.getToken();
                 redisTemplate.opsForList()
                              .leftPush(distribution.getId().toString(), token);
             }

@@ -6,10 +6,14 @@ Build Service:
 gradlew build
 docker build -t msrilaks/token-distribution-service .
 
-Run Docker Container:
+Clean up containers:
+docker system prune -a --volumes
+
+Run Docker Containers:
 docker network create my-net
-docker run -p 6379:6379 --net my-net --name redis -d redis
-docker run -p 8080:8080 --net my-net msrilaks/token-distribution-service
+docker run -p 6389:6379 --net my-net --name redis -d redis
+
+docker run -p 8080:8080 -e REDIS_HOST=redis -e REDIS_PORT=6389 -e LOG_DIR=logs --net my-net msrilaks/token-distribution-service
 
 Run Using Docker Compose:
 docker-compose up

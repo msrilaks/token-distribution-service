@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 public class Group implements Serializable {
-    public String token;
-    public int    percentage;
+    private String token;
+    private int    percentage;
 }
