@@ -1,12 +1,11 @@
 package com.cloud.tokenservice.repository;
 
-import com.cloud.tokenservice.model.Distribution;
-import com.cloud.tokenservice.model.Group;
 import com.cloud.tokenservice.model.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -21,29 +20,23 @@ public class TokenRingRepository {
                                                            distributionId));
     }
 
-    public void createTokenRing(Distribution distribution) {
-        populateTokenRing(distribution);
+    public void createTokenRing(UUID distributionId, List<String> tokenRing) {
+        for (String token : tokenRing) {
+            redisTemplate.opsForList()
+                         .leftPush(distributionId.toString(), token);
+        }
     }
 
     public void updateTokenRing(
-            UUID distributionId, Distribution distribution) {
-        redisTemplate.opsForList()
-                     .trim(distributionId.toString(), -1, 0);
-        populateTokenRing(distribution);
+            UUID distributionId, List<String> tokenRing) {
+        deleteTokenRing(distributionId);
+        createTokenRing(distributionId, tokenRing);
     }
 
-    private void populateTokenRing(Distribution distribution) {
-        for (Group group : distribution.getGroups()) {
-            for (int i = 0; i < group.getPercentage(); i++) {
-                String token = group.getToken();
-                redisTemplate.opsForList()
-                             .leftPush(distribution.getId().toString(), token);
-            }
-        }
-    }
 
     public void deleteTokenRing(UUID distributionId) {
         redisTemplate.opsForList()
                      .trim(distributionId.toString(), -1, 0);
     }
+
 }
