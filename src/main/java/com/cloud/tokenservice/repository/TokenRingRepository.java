@@ -1,11 +1,11 @@
 package com.cloud.tokenservice.repository;
 
 import com.cloud.tokenservice.model.Token;
+import com.cloud.tokenservice.model.TokenRing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -20,15 +20,15 @@ public class TokenRingRepository {
                                                            distributionId));
     }
 
-    public void createTokenRing(UUID distributionId, List<String> tokenRing) {
-        for (String token : tokenRing) {
+    public void createTokenRing(UUID distributionId, TokenRing tokenRing) {
+        for (String token : tokenRing.getAsList()) {
             redisTemplate.opsForList()
                          .leftPush(distributionId.toString(), token);
         }
     }
 
     public void updateTokenRing(
-            UUID distributionId, List<String> tokenRing) {
+            UUID distributionId, TokenRing tokenRing) {
         deleteTokenRing(distributionId);
         createTokenRing(distributionId, tokenRing);
     }

@@ -1,21 +1,37 @@
 package com.cloud.tokenservice.handler;
 
 import com.cloud.tokenservice.model.Distribution;
-import com.cloud.tokenservice.model.Group;
+import com.cloud.tokenservice.model.TokenRing;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 @Component
 public class TokenRingHandler {
-    public List<String> createTokenRing(Distribution distribution) {
-        List<String> tokenList = new ArrayList<>();
-        for (Group group : distribution.getGroups()) {
-            for (int i = 0; i < group.getPercentage(); i++) {
-                tokenList.add(group.getToken());
-            }
+    private static final Logger LOGGER = LoggerFactory.getLogger(
+            TokenRingHandler.class.getName());
+
+    public TokenRing createTokenRing(Distribution distribution) {
+        TokenRing tokenRing = new TokenRing();
+        Map<String, Integer> distMap = distribution.getAsMap();
+
+        for (int i = 0; i < 10; i++) {
+            distMap.keySet()
+                   .iterator()
+                   .forEachRemaining(token -> {
+                       int tokenCount = distMap.get(token) % 10;
+                       tokenRing.add(token, tokenCount);
+                   });
+
         }
-        return tokenList;
+        LOGGER.info(
+                "Token Ring constructed for " + distribution.getId() + " : " +
+                tokenRing);
+
+        return tokenRing;
     }
+
+
 }
