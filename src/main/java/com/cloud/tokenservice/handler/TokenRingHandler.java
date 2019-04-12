@@ -40,25 +40,18 @@ public class TokenRingHandler {
                    int weight = distMap.get(token) % 10;
                    int oldWeight = distributionWeightMap.get(token);
                    if (weight + oldWeight >= 10) {
-                       LOGGER.info("Token Ring Distribution: " +
-                                   distribution.getId() + " token: " + token +
-                                   " weight: " + weight + " oldWeight:" +
-                                   oldWeight);
                        distributionWeightMap.put(token,
                                                  (weight + oldWeight) - 10);
                        tokenCount++;
                    } else {
-                       LOGGER.info("Token Ring Distribution: " +
-                                   distribution.getId() + " token: " + token +
-                                   " weight: " + weight + " oldWeight:" +
-                                   oldWeight);
                        distributionWeightMap.put(token, (weight + oldWeight));
                    }
                    tokenRing.add(token, tokenCount);
-
                    LOGGER.info(
                            "Token Ring Distribution: " + distribution.getId() +
-                           " token: " + token + "tokenCount: " + tokenCount);
+                           " token: " + token + " weight: " + weight +
+                           " oldWeight:" + oldWeight + "tokenCount: " +
+                           tokenCount);
                });
     }
 
