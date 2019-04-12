@@ -37,6 +37,9 @@ public class ApplicationControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Error> allException(final Exception e) {
+        if (e.getCause() instanceof DistributionException) {
+            return distributionException((DistributionException) e.getCause());
+        }
         LOGGER.error(ErrorCodes.APPLICATION_ERROR.getErrorMessage(), e);
         return new ResponseEntity<Error>(
                 ErrorCodes.APPLICATION_ERROR.constructError(),

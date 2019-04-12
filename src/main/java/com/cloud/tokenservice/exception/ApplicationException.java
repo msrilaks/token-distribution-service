@@ -10,6 +10,11 @@ public class ApplicationException extends RuntimeException {
         this.error = error;
     }
 
+    public ApplicationException(Error error) {
+        super(error.getMessage());
+        this.error = error;
+    }
+
     public Error getApplicationError() {
         return error;
     }

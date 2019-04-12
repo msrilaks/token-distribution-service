@@ -47,7 +47,7 @@ public class TokenRingHandler {
                        distributionWeightMap.put(token, (weight + oldWeight));
                    }
                    tokenRing.add(token, tokenCount);
-                   LOGGER.info(
+                   LOGGER.debug(
                            "Token Ring Distribution: " + distribution.getId() +
                            " token: " + token + " weight: " + weight +
                            " oldWeight:" + oldWeight + "tokenCount: " +

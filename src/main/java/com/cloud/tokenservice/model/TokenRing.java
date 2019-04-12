@@ -24,11 +24,12 @@ public class TokenRing {
         tokenCountsMap.forEach((k, v) -> {
             tokenCounts.append(k)
                        .append("=")
-                       .append(v).append(" ");
+                       .append(v)
+                       .append(" ");
         });
-        return "Token Counts :" + tokenCounts
-               + ", Tokens: " + tokenList.stream()
-                        .map(a -> a +" ")
+        return "Token Counts :" + tokenCounts + ", Tokens: " +
+               tokenList.stream()
+                        .map(a -> a + " ")
                         .collect(Collectors.joining(""));
     }
 

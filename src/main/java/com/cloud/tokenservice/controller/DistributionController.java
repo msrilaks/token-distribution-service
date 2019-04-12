@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
@@ -23,7 +24,7 @@ public class DistributionController {
     @ApiOperation(value = "Create a Distribution", tags = {"Distributions"})
     public ResponseEntity<Distribution> createDistribution(
             @RequestBody
-                    Distribution distribution) {
+            @Valid Distribution distribution) {
         distributionService.createDistribution(distribution);
         return ResponseEntity.ok(distribution);
     }

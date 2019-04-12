@@ -6,4 +6,8 @@ public class DistributionException extends ApplicationException {
     public DistributionException(Error error, Throwable cause) {
         super(error, cause);
     }
+
+    public DistributionException(Error error) {
+        super(error);
+    }
 }

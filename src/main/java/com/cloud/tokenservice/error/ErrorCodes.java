@@ -2,13 +2,16 @@ package com.cloud.tokenservice.error;
 
 import com.cloud.tokenservice.model.Error;
 
-import static com.cloud.tokenservice.error.ErrorConstants.APP_ERR_MSG;
-import static com.cloud.tokenservice.error.ErrorConstants.DISTRIBUTION_NOT_FOUND_MSG;
+import static com.cloud.tokenservice.error.ErrorConstants.*;
 
 public enum ErrorCodes {
     APPLICATION_ERROR(1, APP_ERR_MSG, APP_ERR_MSG),
     DISTRIBUTION_NOT_FOUND(2, DISTRIBUTION_NOT_FOUND_MSG,
-                           DISTRIBUTION_NOT_FOUND_MSG);
+                           DISTRIBUTION_NOT_FOUND_MSG),
+    DISTRIBUTION_GREATER_MAX(3, DISTRIBUTION_GREATER_MAX_MSG,
+                             DISTRIBUTION_GREATER_MAX_MSG),
+    DISTRIBUTION_LESSER_MIN(4, DISTRIBUTION_LESSER_MIN_MSG,
+                            DISTRIBUTION_LESSER_MIN_MSG);
 
     private int    errorCode;
     private String errorMessage;
