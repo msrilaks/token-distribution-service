@@ -8,9 +8,9 @@ http://localhost:8080/swagger-ui.html
 # LinkedIn Article
 https://www.linkedin.com/pulse/scalable-percentage-based-entity-distribution-cloud-using-mudaliar/
 
-# How to Build Service
-gradlew build
-docker build -t msrilaks/token-distribution-service .
+# How to Build Service and Docker Image
+* gradlew build
+* docker build -t msrilaks/token-distribution-service .
 
 # How to Run Services
 
@@ -21,7 +21,8 @@ docker system prune -a --volumes
 docker-compose up
 
 ## Or Run Docker Containers
-docker network create my-net
-docker run -p 6389:6379 --net my-net --name redis -d redis
-docker run -p 8080:8080 -e REDIS_HOST=redis -e REDIS_PORT=6389 -e LOG_DIR=logs --net my-net msrilaks/token-distribution-service
+* docker network create my-net
+* docker run -p 6389:6379 --net my-net --name redis -d redis
+* docker run -p 8080:8080 -e REDIS_HOST=redis -e REDIS_PORT=6389 -e LOG_DIR=logs
+ --net my-net msrilaks/token-distribution-service
 
