@@ -2,6 +2,8 @@
 This is a RESTful microservice that allows generation of tokens according to a
 specified distribution and returns tokens to incoming GET requests with adherence to the distribution percentages.
 
+[![Build Status](https://travis-ci.org/msrilaks/token-distribution-service.svg?branch=master)](https://travis-ci.org/msrilaks/token-distribution-service)
+
 # Swagger UI:
 http://localhost:8080/swagger-ui.html
 
