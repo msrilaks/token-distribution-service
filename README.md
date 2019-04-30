@@ -4,9 +4,6 @@ specified distribution and returns tokens to incoming GET requests with adherenc
 
 [![Build Status](https://travis-ci.org/msrilaks/token-distribution-service.svg?branch=master)](https://travis-ci.org/msrilaks/token-distribution-service)
 
-# Swagger UI:
-http://localhost:8080/swagger-ui.html
-
 # LinkedIn Article
 https://www.linkedin.com/pulse/scalable-percentage-based-entity-distribution-cloud-using-mudaliar/
 
@@ -28,3 +25,5 @@ docker-compose up
 * docker run -p 8080:8080 -e REDIS_HOST=redis -e REDIS_PORT=6389 -e LOG_DIR=logs
  --net my-net msrilaks/token-distribution-service
 
+# Swagger UI:
+http://localhost:8080/swagger-ui.html
