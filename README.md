@@ -1,11 +1,14 @@
 # token-distribution-service
-This is a RESTful microservice that allows generation of tokens according to a
-specified distribution and returns tokens to incoming GET requests with adherence to the distribution percentages.
+Token Distribution Service is a dockerized micro service which exposes REST
+API's to create tokens based on a specified percentage distribution of tokens.
+For incoming GET requests made to fetch a token for a distribution, it
+returns  token such that the distribution percentages are adhered to any point in time.
+Token Distribution Service can scale horizontally.
+
+# LinkedIn Article with More Details
+https://www.linkedin.com/pulse/scalable-percentage-based-entity-distribution-cloud-using-mudaliar/
 
 [![Build Status](https://travis-ci.org/msrilaks/token-distribution-service.svg?branch=master)](https://travis-ci.org/msrilaks/token-distribution-service)
-
-# LinkedIn Article
-https://www.linkedin.com/pulse/scalable-percentage-based-entity-distribution-cloud-using-mudaliar/
 
 # How to Build Service and Docker Image
 * gradlew build
