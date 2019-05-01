@@ -1,4 +1,4 @@
-# token-distribution-service [![Build Status](https://travis-ci.org/msrilaks/token-distribution-service.svg?branch=master)](https://travis-ci.org/msrilaks/token-distribution-service)
+# token-distribution-service    [![Build Status](https://travis-ci.org/msrilaks/token-distribution-service.svg?branch=master)](https://travis-ci.org/msrilaks/token-distribution-service)
 Token Distribution Service is a dockerized micro service which exposes REST
 API's to create tokens based on a specified percentage distribution of tokens.
 For incoming GET requests made to fetch a token for a distribution, it
